@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdyx.echannel.vboss.dao.TbVbossCityFlagDao" >
+  <resultMap id="BaseResultMap" type="com.sdyx.echannel.vboss.model.TbVbossCityFlag" >
+    <result column="city_flag" property="cityFlag" jdbcType="VARCHAR" />
+    <result column="std_city_flag" property="stdCityFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.sdyx.echannel.vboss.model.TbVbossCityFlag" >
+    insert into tb_vboss_city_flag (city_flag, std_city_flag)
+    values (#{cityFlag,jdbcType=VARCHAR}, #{stdCityFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdyx.echannel.vboss.model.TbVbossCityFlag" >
+    insert into tb_vboss_city_flag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cityFlag != null" >
+        city_flag,
+      </if>
+      <if test="stdCityFlag != null" >
+        std_city_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cityFlag != null" >
+        #{cityFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="stdCityFlag != null" >
+        #{stdCityFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <sql id="Base_Column_List" >
+    city_flag, std_city_flag
+  </sql>
+  <select id="selectByCityFlag" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_vboss_city_flag
+    where city_flag = #{cityFlag,jdbcType=VARCHAR}
+  </select>
+</mapper>

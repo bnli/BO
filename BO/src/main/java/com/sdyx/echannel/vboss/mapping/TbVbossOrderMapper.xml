@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdyx.echannel.vboss.dao.TbVbossOrderDao" >
+  <resultMap id="BaseResultMap" type="com.sdyx.echannel.vboss.model.TbVbossOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="modify_at" property="modifyAt" jdbcType="TIMESTAMP" />
+    <result column="disorder_date" property="disorderDate" jdbcType="VARCHAR" />
+    <result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+    <result column="order_date" property="orderDate" jdbcType="VARCHAR" />
+    <result column="pay_order_date" property="payOrderDate" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="ca_number" property="caNumber" jdbcType="VARCHAR" />
+    <result column="customerid" property="customerid" jdbcType="VARCHAR" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="check_order_date" property="checkOrderDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_at, modify_at, disorder_date, order_code, order_date, pay_order_date, 
+    price, status, type, ca_number, customerid, operator, check_order_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_vboss_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_vboss_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sdyx.echannel.vboss.model.TbVbossOrder" >
+    insert into tb_vboss_order (id, create_at, modify_at, 
+      disorder_date, order_code, order_date, 
+      pay_order_date, price, status, 
+      type, ca_number, customerid, 
+      operator, check_order_date)
+    values (#{id,jdbcType=BIGINT}, #{createAt,jdbcType=TIMESTAMP}, #{modifyAt,jdbcType=TIMESTAMP}, 
+      #{disorderDate,jdbcType=VARCHAR}, #{orderCode,jdbcType=VARCHAR}, #{orderDate,jdbcType=VARCHAR}, 
+      #{payOrderDate,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{caNumber,jdbcType=VARCHAR}, #{customerid,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{checkOrderDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sdyx.echannel.vboss.model.TbVbossOrder" >
+    insert into tb_vboss_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="modifyAt != null" >
+        modify_at,
+      </if>
+      <if test="disorderDate != null" >
+        disorder_date,
+      </if>
+      <if test="orderCode != null" >
+        order_code,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="payOrderDate != null" >
+        pay_order_date,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="caNumber != null" >
+        ca_number,
+      </if>
+      <if test="customerid != null" >
+        customerid,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="checkOrderDate != null" >
+        check_order_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAt != null" >
+        #{modifyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disorderDate != null" >
+        #{disorderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null" >
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrderDate != null" >
+        #{payOrderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="caNumber != null" >
+        #{caNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerid != null" >
+        #{customerid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="checkOrderDate != null" >
+        #{checkOrderDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sdyx.echannel.vboss.model.TbVbossOrder" >
+    update tb_vboss_order
+    <set >
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAt != null" >
+        modify_at = #{modifyAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disorderDate != null" >
+        disorder_date = #{disorderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null" >
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrderDate != null" >
+        pay_order_date = #{payOrderDate,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="caNumber != null" >
+        ca_number = #{caNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerid != null" >
+        customerid = #{customerid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="checkOrderDate != null" >
+        check_order_date = #{checkOrderDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sdyx.echannel.vboss.model.TbVbossOrder" >
+    update tb_vboss_order
+    set create_at = #{createAt,jdbcType=TIMESTAMP},
+      modify_at = #{modifyAt,jdbcType=TIMESTAMP},
+      disorder_date = #{disorderDate,jdbcType=VARCHAR},
+      order_code = #{orderCode,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=VARCHAR},
+      pay_order_date = #{payOrderDate,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      ca_number = #{caNumber,jdbcType=VARCHAR},
+      customerid = #{customerid,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      check_order_date = #{checkOrderDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
