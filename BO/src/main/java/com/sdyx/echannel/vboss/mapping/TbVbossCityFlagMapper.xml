@@ -35,6 +35,6 @@
     select 
     <include refid="Base_Column_List" />
     from tb_vboss_city_flag
-    where city_flag = #{cityFlag,jdbcType=VARCHAR}
+    where #{cityFlag,jdbcType=VARCHAR} regexp city_flag
   </select>
 </mapper>

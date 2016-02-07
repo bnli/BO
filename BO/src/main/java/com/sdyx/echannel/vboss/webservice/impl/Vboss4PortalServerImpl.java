@@ -61,6 +61,10 @@ public class Vboss4PortalServerImpl implements Vboss4PortalServer {
 				String cityFlag = (String) ((Map<String, Object>) request.get("parameters")).get("cityFlag");
 				response = serviceInfoService.getCityFlag(cityFlag);
 				return response;
+			} else if (((String) request.get("method")).equals("getCityFlagByIP")) {
+				String cityFlag = (String) ((Map<String, Object>) request.get("parameters")).get("cityFlag");
+				response = serviceInfoService.getCityFlag(cityFlag);
+				return response;
 			} else if (((String) request.get("method")).equals("getCustomerNumber")) {
 				String caNumber = (String) ((Map<String, Object>) request.get("parameters")).get("caNumber");
 				String operatorID = (String) ((Map<String, Object>) request.get("parameters")).get("operatorID");

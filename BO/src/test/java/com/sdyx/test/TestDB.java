@@ -74,7 +74,7 @@ public class TestDB {
 	
 	@Test
 	public void Test6() {
-		System.out.println(serviceInfoService.getCityFlag("4096"));
+		System.out.println(serviceInfoService.getCityFlag("10.46.0.0"));
 		
 	}
 	

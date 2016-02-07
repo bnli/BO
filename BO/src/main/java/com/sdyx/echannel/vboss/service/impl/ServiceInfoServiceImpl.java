@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.sdyx.echannel.vboss.dao.TbVbossCityFlagDao;
 import com.sdyx.echannel.vboss.dao.TbVbossHallDao;
 import com.sdyx.echannel.vboss.dao.impl.TbVbossHallDaoImpl;
+import com.sdyx.echannel.vboss.model.TbVbossCityFlag;
 import com.sdyx.echannel.vboss.model.TbVbossHall;
 import com.sdyx.echannel.vboss.service.ServiceInfoService;
 
@@ -89,7 +90,11 @@ public class ServiceInfoServiceImpl implements ServiceInfoService {
 	@Override
 	public String getCityFlag(String cityFlag) {
 		// TODO Auto-generated method stub
-		String stdCityFlag = tbVbossCityFlagDao.selectByCityFlag(cityFlag).getStdCityFlag(); 
+		String stdCityFlag = null;
+		TbVbossCityFlag tbVbossCityFlag = tbVbossCityFlagDao.selectByCityFlag(cityFlag);
+		if (tbVbossCityFlag != null ) {
+			stdCityFlag = tbVbossCityFlag.getStdCityFlag(); 
+		}
 		if (stdCityFlag == null) {
 			return "{\"status\":\"1\",\"errorMessage\":\"获取运营商编码失败\",\"data\":{}}";
 		} else {
